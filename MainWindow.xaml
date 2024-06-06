@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Upgrade"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+		x:Name="mainWin"
+		WindowStyle="None" AllowsTransparency="True"
+		WindowStartupLocation="CenterScreen"
+		MouseMove="mainWin_MouseMove"
+        Title="MainWindow" Height="370" Width="550" >
+	<Grid>
+
+		<Image Source="123.png"></Image>
+		
+		<Grid>
+			<!--背景区域-->
+		
+		
+			<Grid.RowDefinitions>
+				<RowDefinition Height="48" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+
+			<Grid x:Name="titleArea">
+
+			</Grid>
+
+			<Grid Grid.Row="1">
+			
+			</Grid>
+
+		</Grid>
+	</Grid>
+
 </Window>
