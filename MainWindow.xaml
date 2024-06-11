@@ -7,28 +7,53 @@
         mc:Ignorable="d"
 		x:Name="mainWin"
 		WindowStyle="None" AllowsTransparency="True"
-		WindowStartupLocation="CenterScreen"
-		MouseMove="mainWin_MouseMove"
+		WindowStartupLocation="CenterScreen" BorderThickness="0"
         Title="MainWindow" Height="370" Width="550" >
+	<!--MouseMove="mainWin_MouseMove"-->
 	<Grid>
 
-		<Image Source="123.png"></Image>
-		
+		<Image Source="123.png" Stretch="Fill" />
+
+		<Ellipse Width="200" Height="120" Fill="#FFECD0F8" 
+				 VerticalAlignment="Top" Margin="0,-52,-20,0" Visibility="Visible"
+				 HorizontalAlignment="Right" >
+			<Ellipse.Effect>
+				<BlurEffect Radius="20" KernelType="Gaussian" RenderingBias="Quality" />
+			</Ellipse.Effect>
+			
+		</Ellipse>
+
 		<Grid>
 			<!--背景区域-->
 		
 		
 			<Grid.RowDefinitions>
-				<RowDefinition Height="48" />
+				<RowDefinition Height="40" />
 				<RowDefinition />
 			</Grid.RowDefinitions>
 
-			<Grid x:Name="titleArea">
+			<Grid x:Name="titleArea" Background="Transparent"
+				  MouseMove="titleArea_MouseMove">
 
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+					<Button Style="{DynamicResource ButtonIconStyle}"
+							local:IconElement.Geometry="{StaticResource WindowMinGeometry}" 
+							Click="MinWin_Click" />
+					<Button Style="{DynamicResource ButtonIconStyle}"
+							local:IconElement.Geometry="{StaticResource CloseGeometry}"
+							Click="CloseApp_Click" />
+				</StackPanel>
 			</Grid>
 
 			<Grid Grid.Row="1">
-			
+
+				<Button Width="200" Height="40" Style="{StaticResource ButtonBaseStyle}"
+						Margin="0 0 0 48" VerticalAlignment="Bottom" local:BorderElement.CornerRadius="20"
+						local:IconElement.Geometry="{StaticResource UpdateGeometry}"
+						local:IconElement.Width="16" local:IconElement.Height="16"
+						Foreground="White" Cursor="Hand" >
+					<TextBlock Text="立即更新" FontSize="18" Foreground="White" ></TextBlock>
+				</Button>
 			</Grid>
 
 		</Grid>

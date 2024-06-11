@@ -47,14 +47,23 @@ namespace Upgrade
             Console.WriteLine();
         }
         
-   
-
-        private void mainWin_MouseMove(object sender, MouseEventArgs e)
+        private void titleArea_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 this.DragMove();
             }
+        }
+
+        private void MinWin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseApp_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            Environment.Exit(0);
         }
     }
 }

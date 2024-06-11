@@ -1,0 +1,90 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:local="clr-namespace:Upgrade">
+
+	<Color x:Key="PrimaryColor">#996cf3</Color>
+	<Color x:Key="DarkPrimaryColor">#326cf3</Color>
+
+	<LinearGradientBrush x:Key="PrimaryBrush" StartPoint="0.5,0" EndPoint="0.5, 1">
+		<GradientStop Color="{StaticResource PrimaryColor}" Offset="0"/>
+		<GradientStop Color="{StaticResource DarkPrimaryColor}" Offset="1"/>
+	</LinearGradientBrush>
+
+	<Style x:Key="ButtonIconStyle" TargetType="{x:Type Button}">
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="Gray" />
+		<Setter Property="local:BorderElement.CornerRadius" Value="0" />
+		<Setter Property="Width" Value="40" />
+		<Setter Property="Height" Value="40" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<!--CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" >-->
+					<Border Background="{TemplateBinding Background}" 
+							CornerRadius="{TemplateBinding local:BorderElement.CornerRadius}"
+							>
+						<StackPanel Orientation="Horizontal" 
+									HorizontalAlignment="Center" VerticalAlignment="Center" 
+									Margin="0">
+							<Path x:Name="PathMain" Fill="{TemplateBinding Foreground}" 
+								  SnapsToDevicePixels="True" Stretch="Uniform" 
+								  HorizontalAlignment="Center" VerticalAlignment="Center" 
+								  Data="{TemplateBinding local:IconElement.Geometry}"/>
+						</StackPanel>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="Red"/>
+				<Setter Property="Foreground" Value="White"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+
+	
+	<Style x:Key="ButtonBaseStyle" TargetType="{x:Type Button}">
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+		<Setter Property="local:BorderElement.CornerRadius" Value="0" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<!--CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" >-->
+					<Border Background="{TemplateBinding Background}" 
+							CornerRadius="{TemplateBinding local:BorderElement.CornerRadius}"
+							>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}">
+							<Path x:Name="PathMain" 
+									  Width="{TemplateBinding local:IconElement.Width}" 
+									  Height="{TemplateBinding local:IconElement.Height}" 
+									  Fill="{TemplateBinding Foreground}"
+									  SnapsToDevicePixels="True" Stretch="Uniform" 
+									  Data="{TemplateBinding local:IconElement.Geometry}"/>
+							<ContentPresenter x:Name="ContentPresenterMain" SnapsToDevicePixels="True"
+												  VerticalAlignment="Center" Margin="6,0,0,0" />
+						</StackPanel>
+					</Border>
+
+					<ControlTemplate.Triggers>
+						<Trigger Property="Content" Value="{x:Null}">
+							<Setter Property="Visibility" Value="Collapsed" TargetName="ContentPresenterMain"/>
+						</Trigger>
+						<Trigger Property="local:IconElement.Geometry" Value="{x:Null}">
+							<Setter Property="Visibility" Value="Collapsed" TargetName="PathMain"/>
+							<Setter Property="Margin" Value="0" TargetName="ContentPresenterMain"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+
+</ResourceDictionary>
