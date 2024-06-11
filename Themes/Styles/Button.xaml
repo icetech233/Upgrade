@@ -10,6 +10,12 @@
 		<GradientStop Color="{StaticResource DarkPrimaryColor}" Offset="1"/>
 	</LinearGradientBrush>
 
+	<LinearGradientBrush x:Key="ForeBrush" StartPoint="0 0.5" EndPoint="1 0.5">
+		<GradientStop Color="{StaticResource PrimaryColor}" Offset="0"/>
+		<GradientStop Color="{StaticResource DarkPrimaryColor}" Offset="1"/>
+	</LinearGradientBrush>
+	
+
 	<Style x:Key="ButtonIconStyle" TargetType="{x:Type Button}">
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />

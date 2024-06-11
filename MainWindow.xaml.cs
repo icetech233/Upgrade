@@ -57,7 +57,7 @@ namespace Upgrade
 
         private void MinWin_Click(object sender, RoutedEventArgs e)
         {
-
+            this.WindowState = WindowState.Minimized;
         }
 
         private void CloseApp_Click(object sender, RoutedEventArgs e)
