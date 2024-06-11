@@ -8,7 +8,7 @@
 		x:Name="mainWin"
 		WindowStyle="None" AllowsTransparency="True"
 		WindowStartupLocation="CenterScreen" BorderThickness="0"
-        Title="MainWindow" Height="370" Width="550" >
+        Title="MainWindow" Width="550" Height="370" >
 	<Grid>
 
 		<Image Source="123.png" Stretch="Fill" />
@@ -29,6 +29,11 @@
 			<Grid x:Name="titleArea" Background="Transparent"
 				  MouseMove="titleArea_MouseMove">
 
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+					<TextBlock Text="网关助手 检查更新" Margin="8 0 0 0" 
+							   FontSize="14" Foreground="Gray"
+							   VerticalAlignment="Center" />
+				</StackPanel>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 					<Button Style="{DynamicResource ButtonIconStyle}"
 							local:IconElement.Geometry="{StaticResource WindowMinGeometry}" 
@@ -45,9 +50,18 @@
 						   FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,35,114,0" />
 
 				<Border VerticalAlignment="Top" HorizontalAlignment="Right"
-						Margin="0,20,34,0" Background="Red" Padding="6 2 6 2">
-					<TextBlock Text="v1.0.1" FontSize="18" FontWeight="Bold" Foreground="White" ></TextBlock>
+						Margin="0,20,34,0" Background="#FFEA8989" Padding="6 2 6 2">
+					<TextBlock Text="v1.0.1" FontSize="18" FontWeight="Bold" Foreground="#FF980000" ></TextBlock>
 				</Border>
+
+				<ScrollViewer Height="150" Margin="280 80 30 100" ScrollViewer.VerticalScrollBarVisibility="Auto"
+							  Padding="4 2">
+					<TextBlock Foreground="Gray" FontSize="16" TextWrapping="Wrap">
+						<TextBlock.Text>
+							更新测试第二版本
+						</TextBlock.Text>
+					</TextBlock>
+				</ScrollViewer>
 
 
 				<Button Width="200" Height="40" Style="{StaticResource ButtonBaseStyle}"
