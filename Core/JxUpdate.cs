@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Upgrade.Core
 {
@@ -17,19 +18,21 @@ namespace Upgrade.Core
 
         public static string AppKey { get; set; } = "a1d3c7507a924f8d86a7a60dd16b6772";
 
-        static JxUpdate() { }
+        // static JxUpdate() { }
 
-        private static Data cacheData = null;
-        private static Version serverVersion = null;
+        Data cacheData = null;
+        public Version ServerVersion { get; protected set; }
+        public string SafeDownloadUrl { get => cacheData.currentPackage.safeDownloadUrl; }
+
         /// <summary>
         /// UpdateInfo
         /// </summary>
-        public static async Task UpdateInfoAsync()
+        public async Task UpdateInfoAsync()
         {
             HttpClient httpClient = new HttpClient();
             try
             {
-                var response = await httpClient.GetAsync(UPDATE_API_PREFIX + AppKey);
+                var response = await httpClient.GetAsync(UPDATE_API_PREFIX +  AppKey);
                 // 确保请求成功（HTTP状态码 200 表示成功
                 response.EnsureSuccessStatusCode();
                 // 读取响应的内容
@@ -38,12 +41,13 @@ namespace Upgrade.Core
                 var _root = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(responseBody);
                 // _root.data.currentPackage.version;
                 cacheData = _root.data;
-                serverVersion = Version.Parse(cacheData.currentPackage.version);
-                Console.WriteLine();
+                ServerVersion = Version.Parse(cacheData.currentPackage.version);
+                // Console.WriteLine();
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("网络错误:" +ex.Message);
+                return;
             }
             finally
             {

@@ -68,7 +68,7 @@
 						Margin="0 0 0 48" VerticalAlignment="Bottom" local:BorderElement.CornerRadius="20"
 						local:IconElement.Geometry="{StaticResource UpdateGeometry}"
 						local:IconElement.Width="16" local:IconElement.Height="16"
-						Foreground="White" Cursor="Hand" >
+						Foreground="White" Cursor="Hand" Click="UpdateApp_Click">
 					<TextBlock Text="立即更新" FontSize="18"  Foreground="White" ></TextBlock>
 				</Button>
 			</Grid>
