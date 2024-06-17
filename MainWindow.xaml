@@ -12,12 +12,13 @@
 	<Grid>
 
 		<Image Source="123.png" Stretch="Fill" />
-		<Ellipse Width="200" Height="120" Fill="#FFECD0F8" 
-				 VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,-52,-20,0"  >
-			<Ellipse.Effect>
-				<BlurEffect Radius="20" KernelType="Gaussian" RenderingBias="Quality" />
-			</Ellipse.Effect>
-		</Ellipse>
+		<Grid ClipToBounds="True" Width="190" Height="70" VerticalAlignment="Top" HorizontalAlignment="Right">
+			<Ellipse Width="200" Height="120" Fill="#ECD0F8" Margin="0,-50,-20,0" HorizontalAlignment="Right">
+				<Ellipse.Effect>
+					<BlurEffect Radius="20" KernelType="Gaussian" RenderingBias="Quality" />
+				</Ellipse.Effect>
+			</Ellipse>
+		</Grid>
 		
 		<Grid>
 			<!--背景区域-->
@@ -65,10 +66,8 @@
 
 
 				<Button Width="200" Height="40" Style="{StaticResource ButtonBaseStyle}"
-						Margin="0 0 0 48" VerticalAlignment="Bottom" local:BorderElement.CornerRadius="20"
-						local:IconElement.Geometry="{StaticResource UpdateGeometry}"
-						local:IconElement.Width="16" local:IconElement.Height="16"
-						Foreground="White" Cursor="Hand" Click="UpdateApp_Click">
+						Margin="0 0 0 48" VerticalAlignment="Bottom" local:IconElement.Geometry="{StaticResource UpdateGeometry}"
+						Foreground="White" Click="UpdateApp_Click">
 					<TextBlock Text="立即更新" FontSize="18"  Foreground="White" ></TextBlock>
 				</Button>
 			</Grid>
