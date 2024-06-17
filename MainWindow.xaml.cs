@@ -106,8 +106,8 @@ namespace Upgrade
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
-            }finally
+            }
+            finally
             {
                 button.IsEnabled = true;
             }
